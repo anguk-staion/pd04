@@ -4,333 +4,328 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>나만의 여행계획서 만들기 (간단 버전) | PLAYDAY</title>
+
+  <!-- Pretendard -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.css" />
+
   <style>
     :root {
-      --bg1: #eaf3f7;
-      --bg2: #f3efe6;
       --ink: #1f2d3d;
       --muted: #6b7785;
-      --line: #e2ddd2;
-      --accent: #2e86ab;
-      --accent-dark: #226d8c;
-      --chip: #f5f2ec;
-      --chip-on: #2e86ab;
+      --line: #e7e2d6;
       --card: #ffffff;
+      --ocean: #1f88a8;
+      --ocean-dark: #176f8b;
+      --sand: #f3ede0;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
-      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+        "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
       color: var(--ink);
-      background: linear-gradient(160deg, var(--bg1) 0%, var(--bg2) 100%);
+      background:
+        radial-gradient(1200px 420px at 50% -120px, #bfe3f0 0%, rgba(191,227,240,0) 70%),
+        linear-gradient(170deg, #e9f4f8 0%, #f4efe4 55%, #f6f1e6 100%);
+      background-attachment: fixed;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
-    .wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 40px 20px 24px;
-    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 44px 20px 24px; }
 
-    /* Header */
-    .head { text-align: center; margin-bottom: 28px; }
+    /* ===== Hero ===== */
+    .hero { text-align: center; margin-bottom: 30px; }
     .brand {
       display: inline-block;
-      font-weight: 900;
-      letter-spacing: 2px;
-      font-size: 15px;
-      color: var(--accent);
-      margin-bottom: 10px;
+      font-weight: 900; letter-spacing: 3px; font-size: 14px;
+      color: var(--ocean);
+      background: #ffffffcc;
+      border: 1px solid #d4e8ef;
+      border-radius: 999px;
+      padding: 6px 16px; margin-bottom: 16px;
     }
-    .head h1 {
-      font-size: 28px;
-      font-weight: 800;
-      margin: 0 0 6px;
-      line-height: 1.3;
+    .hero h1 {
+      font-size: 30px; font-weight: 800; margin: 0 0 8px; line-height: 1.3;
     }
-    .head h1 span { font-size: 18px; font-weight: 700; color: var(--muted); }
-    .head p { margin: 0; color: var(--muted); font-size: 15px; }
+    .hero h1 .sub-tag { font-size: 18px; font-weight: 700; color: var(--muted); }
+    .hero p { margin: 0; color: var(--muted); font-size: 15px; }
+    .ticket-line {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin: 18px auto 0; max-width: 360px; color: var(--ocean);
+    }
+    .ticket-line .dash {
+      flex: 1; height: 0; border-top: 2px dashed #b9d8e3;
+    }
 
-    /* Card */
+    /* ===== Card ===== */
     .card {
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 24px 22px;
-      margin-bottom: 18px;
-      box-shadow: 0 6px 20px rgba(31, 45, 61, 0.05);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 26px rgba(31, 45, 61, 0.07);
     }
+    /* colored step header band */
     .step-head {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 13px;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(0,0,0,.05);
     }
     .badge {
       flex: 0 0 auto;
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: #fff;
-      font-weight: 800;
-      font-size: 14px;
+      width: 36px; height: 36px; border-radius: 50%;
+      color: #fff; font-weight: 800; font-size: 16px;
       display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 3px 8px rgba(0,0,0,.15);
     }
-    .step-head h2 { font-size: 17px; margin: 0; font-weight: 800; }
-    .step-head .sub { font-size: 13px; color: var(--muted); margin-top: 2px; }
+    .step-head h2 { font-size: 18px; margin: 0; font-weight: 800; }
+    .step-head .sub { font-size: 13px; color: var(--muted); margin-top: 3px; }
+    .step-head .ico { margin-left: auto; font-size: 26px; opacity: .9; }
 
-    .field { margin-bottom: 18px; }
+    /* per-step colors */
+    .s1 .step-head { background: linear-gradient(135deg, #e4f2f8, #eef7f1); }
+    .s1 .badge { background: #1f88a8; }
+    .s2 .step-head { background: linear-gradient(135deg, #e7f5ec, #f0f7e9); }
+    .s2 .badge { background: #2faa6a; }
+    .s3 .step-head { background: linear-gradient(135deg, #fdeede, #fcf3e6); }
+    .s3 .badge { background: #ef8a3c; }
+    .s4 .step-head { background: linear-gradient(135deg, #efe9fb, #f6edf6); }
+    .s4 .badge { background: #8b5cf6; }
+
+    .card-body { padding: 24px 20px; }
+
+    /* ===== Fields ===== */
+    .field { margin-bottom: 22px; }
     .field:last-child { margin-bottom: 0; }
-    .field > label.title {
-      display: block;
-      font-weight: 700;
-      font-size: 15px;
-      margin-bottom: 8px;
+    .field-label {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 17px; font-weight: 800; color: var(--ink);
+      padding-bottom: 10px; margin-bottom: 14px;
+      border-bottom: 2px solid #eef2f4;
     }
-    .hint { font-size: 12.5px; color: var(--muted); font-weight: 500; }
+    .field-label .lico {
+      width: 28px; height: 28px; border-radius: 9px;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 15px; background: #eef6f9;
+    }
+    .field-label .hint { font-size: 12.5px; font-weight: 600; color: var(--muted); }
 
-    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
     .chip {
       border: 1.5px solid var(--line);
-      background: var(--chip);
-      color: var(--ink);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 14px;
-      cursor: pointer;
-      font-family: inherit;
+      background: #faf8f3; color: var(--ink);
+      border-radius: 999px; padding: 9px 15px; font-size: 14px;
+      cursor: pointer; font-family: inherit; font-weight: 600;
       transition: background .12s, border-color .12s, color .12s;
     }
-    .chip:hover { border-color: var(--accent); }
-    .chip.on {
-      background: var(--chip-on);
-      border-color: var(--chip-on);
-      color: #fff;
-    }
+    .chip:hover { border-color: var(--ocean); }
+    .chip.on { background: var(--ocean); border-color: var(--ocean); color: #fff; }
 
     input[type="text"] {
       width: 100%;
-      border: 1.5px solid var(--line);
-      border-radius: 12px;
-      padding: 11px 13px;
-      font-size: 14px;
-      font-family: inherit;
-      color: var(--ink);
-      background: #fff;
+      border: 1.5px solid var(--line); border-radius: 12px;
+      padding: 12px 14px; font-size: 14px; font-family: inherit; font-weight: 500;
+      color: var(--ink); background: #fff;
     }
-    input[type="text"]:focus { outline: none; border-color: var(--accent); }
+    input[type="text"]:focus { outline: none; border-color: var(--ocean); }
+    input::placeholder { color: #9aa4ae; }
 
-    /* Prompt box */
+    /* ===== Prompt ===== */
     .prompt-box {
-      width: 100%;
-      min-height: 230px;
-      border: 1.5px solid var(--line);
-      border-radius: 14px;
-      padding: 16px;
-      font-size: 14px;
-      line-height: 1.65;
-      font-family: "D2Coding", "Consolas", "Malgun Gothic", monospace;
-      color: var(--ink);
-      background: #fbfaf7;
-      white-space: pre-wrap;
-      resize: vertical;
+      width: 100%; min-height: 240px;
+      border: 1.5px solid var(--line); border-radius: 14px;
+      padding: 16px; font-size: 14px; line-height: 1.7;
+      font-family: inherit; color: var(--ink);
+      background: #fbfaf6; white-space: pre-wrap; resize: vertical;
     }
-    .prompt-box:focus { outline: none; border-color: var(--accent); }
+    .prompt-box:focus { outline: none; border-color: var(--ocean); }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      width: 100%;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 18px;
-      font-size: 15px;
-      font-weight: 800;
-      font-family: inherit;
-      cursor: pointer;
-      text-decoration: none;
-      color: #fff;
-      background: var(--accent);
-      transition: background .12s;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; border: none; border-radius: 13px;
+      padding: 15px 18px; font-size: 15px; font-weight: 800;
+      font-family: inherit; cursor: pointer; text-decoration: none; color: #fff;
+      transition: filter .12s, background .12s;
     }
-    .btn:hover { background: var(--accent-dark); }
-    .btn.copy { margin-top: 12px; }
-    .btn.copy.done { background: #2faa6a; }
-    .btn.ghost {
-      background: #fff;
-      color: var(--accent);
-      border: 1.5px solid var(--accent);
+    .btn:hover { filter: brightness(.95); }
+    .btn.copy { margin-top: 14px; background: #2faa6a; }
+    .btn.copy.done { background: #1f9e5d; }
+    .btn.hai { background: #ef8a3c; }
+    .btn.gallery {
+      background: #fff; color: #8b5cf6; border: 1.5px solid #8b5cf6;
     }
-    .btn.ghost:hover { background: #eef6fa; }
+    .btn.gallery:hover { background: #f6f1fd; filter: none; }
 
+    /* ===== Gallery note (center) ===== */
     .note {
-      margin-top: 12px;
-      font-size: 13.5px;
-      color: var(--muted);
-      line-height: 1.6;
+      margin-top: 16px; text-align: center;
+      font-size: 14px; color: var(--muted); line-height: 1.7;
     }
     .note strong { color: var(--ink); }
     .deadline {
-      display: inline-block;
-      margin-top: 6px;
-      background: #fff3e6;
-      color: #c2611c;
-      border-radius: 8px;
-      padding: 4px 10px;
-      font-size: 13px;
-      font-weight: 700;
+      display: inline-block; margin-top: 10px;
+      background: #fff2e3; color: #c2611c;
+      border-radius: 9px; padding: 6px 14px; font-size: 13.5px; font-weight: 800;
     }
 
     footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      padding: 26px 0 36px;
-      letter-spacing: .3px;
+      text-align: center; color: var(--muted); font-size: 13px;
+      padding: 28px 0 38px; letter-spacing: .3px;
     }
 
     @media (max-width: 480px) {
-      .head h1 { font-size: 23px; }
-      .card { padding: 20px 16px; }
+      .hero h1 { font-size: 24px; }
+      .card-body { padding: 20px 16px; }
+      .field-label { font-size: 16px; }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
 
-    <div class="head">
-      <div class="brand">PLAYDAY</div>
-      <h1>나만의 여행계획서 만들기 <span>(간단 버전)</span></h1>
+    <!-- Hero -->
+    <div class="hero">
+      <div class="brand">✈ PLAYDAY</div>
+      <h1>나만의 여행계획서 만들기 <span class="sub-tag">(간단 버전)</span></h1>
       <p>아래 빈칸을 입력하여 만들어진 프롬프트를 AI에게 입력해보세요</p>
+      <div class="ticket-line"><span class="dash"></span>🧳 ✈ 🏖<span class="dash"></span></div>
     </div>
 
     <!-- STEP 1 -->
-    <div class="card">
-      <div class="step-head">
-        <div class="badge">1</div>
+    <section class="card s1">
+      <header class="step-head">
+        <span class="badge">1</span>
         <div>
           <h2>여행 정보 입력</h2>
           <div class="sub">원하는 조건을 선택하거나 직접 입력하세요</div>
         </div>
-      </div>
+        <span class="ico">📝</span>
+      </header>
+      <div class="card-body">
 
-      <!-- 일정 -->
-      <div class="field">
-        <label class="title">일정</label>
-        <div class="chips" data-group="schedule" data-mode="single">
-          <button type="button" class="chip" data-value="1박 2일">1박 2일</button>
-          <button type="button" class="chip" data-value="2박 3일">2박 3일</button>
-          <button type="button" class="chip" data-value="3박 4일">3박 4일</button>
+        <div class="field">
+          <div class="field-label"><span class="lico">🗓️</span> 일정</div>
+          <div class="chips" data-group="schedule" data-mode="single">
+            <button type="button" class="chip" data-value="1박 2일">1박 2일</button>
+            <button type="button" class="chip" data-value="2박 3일">2박 3일</button>
+            <button type="button" class="chip" data-value="3박 4일">3박 4일</button>
+          </div>
+          <input type="text" id="scheduleCustom" placeholder="원하는 여행 일정을 직접 입력 (예: 4박 5일, 당일치기)" />
         </div>
-        <input type="text" id="scheduleCustom" placeholder="원하는 여행 일정을 직접 입력 (예: 4박 5일, 당일치기)" />
-      </div>
 
-      <!-- 목적지 -->
-      <div class="field">
-        <label class="title">목적지</label>
-        <input type="text" id="destination" placeholder="원하는 목적지를 입력하세요 (빈칸으로 둘 시 AI가 판단하여 추천)" />
-      </div>
-
-      <!-- 동행자 -->
-      <div class="field">
-        <label class="title">동행자</label>
-        <div class="chips" data-group="companion" data-mode="single">
-          <button type="button" class="chip" data-value="가족">가족</button>
-          <button type="button" class="chip" data-value="연인">연인</button>
-          <button type="button" class="chip" data-value="친구">친구</button>
-          <button type="button" class="chip" data-value="혼자">혼자</button>
+        <div class="field">
+          <div class="field-label"><span class="lico">📍</span> 목적지</div>
+          <input type="text" id="destination" placeholder="원하는 목적지를 입력하세요 (빈칸으로 둘 시 AI가 판단하여 추천)" />
         </div>
-        <input type="text" id="companionInfo" placeholder="같이 가는 동행인에 대한 정보를 입력해주세요 (예: 20대 3명, 부모님 포함)" />
-      </div>
 
-      <!-- 취향 -->
-      <div class="field">
-        <label class="title">취향 <span class="hint">· 원하는 여행 키워드를 체크해주세요 (복수 선택 가능)</span></label>
-        <div class="chips" data-group="prefs" data-mode="multi" id="prefChips">
-          <button type="button" class="chip" data-value="힐링">힐링</button>
-          <button type="button" class="chip" data-value="맛집">맛집</button>
-          <button type="button" class="chip" data-value="바다">바다</button>
-          <button type="button" class="chip" data-value="산·자연">산·자연</button>
-          <button type="button" class="chip" data-value="쇼핑">쇼핑</button>
-          <button type="button" class="chip" data-value="호캉스">호캉스</button>
-          <button type="button" class="chip" data-value="핫플레이스">핫플레이스</button>
-          <button type="button" class="chip" data-value="MZ">MZ</button>
-          <button type="button" class="chip" data-value="카페투어">카페투어</button>
-          <button type="button" class="chip" data-value="액티비티">액티비티</button>
-          <button type="button" class="chip" data-value="역사·문화">역사·문화</button>
-          <button type="button" class="chip" data-value="야경">야경</button>
-          <button type="button" class="chip" data-value="사진맛집">사진맛집</button>
-          <button type="button" class="chip" data-value="가성비">가성비</button>
-          <button type="button" class="chip" data-value="럭셔리">럭셔리</button>
-          <button type="button" class="chip" data-value="온천">온천</button>
-          <button type="button" class="chip" data-value="캠핑">캠핑</button>
-          <button type="button" class="chip" data-value="축제">축제</button>
-          <button type="button" class="chip" data-value="로컬체험">로컬체험</button>
-          <button type="button" class="chip" data-value="레트로">레트로</button>
+        <div class="field">
+          <div class="field-label"><span class="lico">👥</span> 동행자</div>
+          <div class="chips" data-group="companion" data-mode="single">
+            <button type="button" class="chip" data-value="가족">가족</button>
+            <button type="button" class="chip" data-value="연인">연인</button>
+            <button type="button" class="chip" data-value="친구">친구</button>
+            <button type="button" class="chip" data-value="혼자">혼자</button>
+          </div>
+          <input type="text" id="companionInfo" placeholder="같이 가는 동행인에 대한 정보를 입력해주세요 (예: 20대 3명, 부모님 포함)" />
         </div>
-        <input type="text" id="prefCustom" placeholder="추가하고 싶은 키워드를 직접 입력 (쉼표로 구분)" />
+
+        <div class="field">
+          <div class="field-label">
+            <span class="lico">✨</span> 취향
+            <span class="hint">· 원하는 여행 키워드를 체크해주세요 (복수 선택 가능)</span>
+          </div>
+          <div class="chips" data-group="prefs" data-mode="multi" id="prefChips">
+            <button type="button" class="chip" data-value="힐링">힐링</button>
+            <button type="button" class="chip" data-value="맛집">맛집</button>
+            <button type="button" class="chip" data-value="바다">바다</button>
+            <button type="button" class="chip" data-value="산·자연">산·자연</button>
+            <button type="button" class="chip" data-value="쇼핑">쇼핑</button>
+            <button type="button" class="chip" data-value="호캉스">호캉스</button>
+            <button type="button" class="chip" data-value="핫플레이스">핫플레이스</button>
+            <button type="button" class="chip" data-value="MZ">MZ</button>
+            <button type="button" class="chip" data-value="카페투어">카페투어</button>
+            <button type="button" class="chip" data-value="액티비티">액티비티</button>
+            <button type="button" class="chip" data-value="역사·문화">역사·문화</button>
+            <button type="button" class="chip" data-value="야경">야경</button>
+            <button type="button" class="chip" data-value="사진맛집">사진맛집</button>
+            <button type="button" class="chip" data-value="가성비">가성비</button>
+            <button type="button" class="chip" data-value="럭셔리">럭셔리</button>
+            <button type="button" class="chip" data-value="온천">온천</button>
+            <button type="button" class="chip" data-value="캠핑">캠핑</button>
+            <button type="button" class="chip" data-value="축제">축제</button>
+            <button type="button" class="chip" data-value="로컬체험">로컬체험</button>
+            <button type="button" class="chip" data-value="레트로">레트로</button>
+          </div>
+          <input type="text" id="prefCustom" placeholder="추가하고 싶은 키워드를 직접 입력 (쉼표로 구분)" />
+        </div>
+
       </div>
-    </div>
+    </section>
 
     <!-- STEP 2 -->
-    <div class="card">
-      <div class="step-head">
-        <div class="badge">2</div>
+    <section class="card s2">
+      <header class="step-head">
+        <span class="badge">2</span>
         <div>
           <h2>완성된 프롬프트</h2>
           <div class="sub">입력한 내용이 자동으로 프롬프트로 재구성됩니다</div>
         </div>
+        <span class="ico">🧾</span>
+      </header>
+      <div class="card-body">
+        <textarea class="prompt-box" id="promptOut" readonly></textarea>
+        <button type="button" class="btn copy" id="copyBtn">📋 프롬프트 복사하기</button>
       </div>
-      <textarea class="prompt-box" id="promptOut" readonly></textarea>
-      <button type="button" class="btn copy" id="copyBtn">📋 프롬프트 복사하기</button>
-    </div>
+    </section>
 
     <!-- STEP 3 -->
-    <div class="card">
-      <div class="step-head">
-        <div class="badge">3</div>
+    <section class="card s3">
+      <header class="step-head">
+        <span class="badge">3</span>
         <div>
           <h2>HAI 접속</h2>
           <div class="sub">복사한 프롬프트를 HAI에 입력하여 결과물을 생성하세요</div>
         </div>
+        <span class="ico">🚀</span>
+      </header>
+      <div class="card-body">
+        <a class="btn hai" href="https://wrks.ai/ko/signin/company/HyundaiEng-Const?code=VXpFbGlMMFFkdUxmL3pFWUFPSG45NWcvV2pZUk4reXl0cGhyWWFUTnJoaVQxMzhYT2tzVVpTQ2xNOGpWVUlrcg==" target="_blank" rel="noopener">HAI 접속하기 →</a>
       </div>
-      <a class="btn" href="https://wrks.ai/ko/signin/company/HyundaiEng-Const?code=VXpFbGlMMFFkdUxmL3pFWUFPSG45NWcvV2pZUk4reXl0cGhyWWFUTnJoaVQxMzhYT2tzVVpTQ2xNOGpWVUlrcg==" target="_blank" rel="noopener">HAI 접속하기 →</a>
-    </div>
+    </section>
 
     <!-- STEP 4 -->
-    <div class="card">
-      <div class="step-head">
-        <div class="badge">4</div>
+    <section class="card s4">
+      <header class="step-head">
+        <span class="badge">4</span>
         <div>
           <h2>Playday Gallery 자랑하기</h2>
           <div class="sub">만든 결과물을 갤러리에 공유해주세요</div>
         </div>
+        <span class="ico">🏆</span>
+      </header>
+      <div class="card-body">
+        <a class="btn gallery" href="https://hmap.hdec.co.kr/HMAP/WorkSpace/Main/AiPicture.aspx" target="_blank" rel="noopener">Playday Gallery로 이동 →</a>
+        <p class="note">
+          만든 결과물을 <strong>Playday Gallery</strong>에 자랑해주세요.<br />
+          우수작을 선정하여 <strong>스타벅스 상품권</strong>을 보내 드립니다.<br />
+          <span class="deadline">제출기한 : '26년 7월 3일</span>
+        </p>
       </div>
-      <a class="btn ghost" href="https://hmap.hdec.co.kr/HMAP/WorkSpace/Main/AiPicture.aspx" target="_blank" rel="noopener">Playday Gallery로 이동 →</a>
-      <p class="note">
-        만든 결과물을 <strong>Playday Gallery</strong>에 자랑해주세요.<br />
-        우수작을 선정하여 <strong>스타벅스 상품권</strong>을 보내 드립니다.<br />
-        <span class="deadline">제출기한 : '26년 7월 3일</span>
-      </p>
-    </div>
+    </section>
 
     <footer>워크이노베이션센터 │ AI디자인랩</footer>
   </div>
 
   <script>
     const state = {
-      schedule: '',
-      scheduleCustom: '',
+      schedule: '', scheduleCustom: '',
       destination: '',
-      companion: '',
-      companionInfo: '',
-      prefs: [],
-      prefCustom: ''
+      companion: '', companionInfo: '',
+      prefs: [], prefCustom: ''
     };
 
-    // Chip groups
     document.querySelectorAll('.chips').forEach(function (group) {
       const name = group.dataset.group;
       const mode = group.dataset.mode;
@@ -350,7 +345,6 @@
       });
     });
 
-    // Text inputs
     function bind(id, key) {
       document.getElementById(id).addEventListener('input', function (e) {
         state[key] = e.target.value;
@@ -396,7 +390,6 @@
       document.getElementById('promptOut').value = buildPrompt();
     }
 
-    // Copy
     const copyBtn = document.getElementById('copyBtn');
     copyBtn.addEventListener('click', async function () {
       const text = document.getElementById('promptOut').value;
