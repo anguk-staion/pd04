@@ -11,15 +11,14 @@
 
   <style>
     :root {
-      --navy: #00306e;      /* Korean Air deep blue */
-      --blue: #14559e;
-      --sky:  #2f86c7;
-      --sky-soft: #e9f1fa;
-      --red:  #c8102e;      /* taegeuk red */
-      --ivory: #f5f0e4;
-      --ink: #1b2a3d;
-      --muted: #6b7a8d;
-      --line: #dde5ee;
+      --navy: #0a1f44;      /* Korean Air Dark Blue (2025 rebrand) */
+      --blue: #16335f;
+      --steel: #3c5d92;     /* muted metallic blue accent */
+      --sky-soft: #e9eef6;
+      --ivory: #f5f1e7;
+      --ink: #16233a;
+      --muted: #6f7b8d;
+      --line: #e0e5ec;
       --card: #ffffff;
     }
     * { box-sizing: border-box; }
@@ -29,8 +28,8 @@
         "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(1100px 460px at 50% -140px, #cbe1f4 0%, rgba(203,225,244,0) 72%),
-        linear-gradient(172deg, #e8f1fb 0%, #eef3f7 48%, #f5f0e4 100%);
+        radial-gradient(1100px 480px at 50% -160px, #d3ddec 0%, rgba(211,221,236,0) 72%),
+        linear-gradient(172deg, #eef2f7 0%, #f1f3f6 50%, #f5f1e7 100%);
       background-attachment: fixed;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
@@ -54,8 +53,8 @@
       margin: 20px auto 0; max-width: 380px; color: var(--navy);
       font-weight: 800; font-size: 13px; letter-spacing: 1.5px;
     }
-    .route .dash { flex: 1; height: 0; border-top: 2px dashed #aac9e0; }
-    .route .plane { color: var(--blue); font-size: 16px; }
+    .route .dash { flex: 1; height: 0; border-top: 2px dashed #bcc8d9; }
+    .route .plane { color: var(--steel); font-size: 16px; }
 
     /* ===== Card ===== */
     .card {
@@ -70,8 +69,8 @@
     .step-head {
       display: flex; align-items: center; gap: 14px;
       padding: 18px 22px;
-      background: linear-gradient(135deg, #eef5fc 0%, #f7fafd 100%);
-      border-bottom: 2px dashed #d3e0ee;   /* ticket perforation */
+      background: linear-gradient(135deg, #eef2f8 0%, #f8fafc 100%);
+      border-bottom: 1.5px dashed #dbe2ec;   /* ticket perforation */
     }
     .badge {
       flex: 0 0 auto;
@@ -82,8 +81,8 @@
       box-shadow: 0 5px 12px rgba(0,48,110,.28);
     }
     .step-head .kicker {
-      font-size: 11px; font-weight: 800; letter-spacing: 2px;
-      color: var(--blue); margin-bottom: 2px;
+      font-size: 11px; font-weight: 800; letter-spacing: 2.5px;
+      color: var(--steel); margin-bottom: 3px;
     }
     .step-head h2 { font-size: 18.5px; margin: 0; font-weight: 800; letter-spacing: -.3px; }
     .step-head .sub { font-size: 13px; color: var(--muted); margin-top: 3px; }
@@ -116,7 +115,7 @@
       cursor: pointer; font-family: inherit; font-weight: 600;
       transition: background .12s, border-color .12s, color .12s;
     }
-    .chip:hover { border-color: var(--sky); }
+    .chip:hover { border-color: var(--steel); }
     .chip.on {
       background: linear-gradient(135deg, var(--navy), var(--blue));
       border-color: var(--navy); color: #fff;
@@ -128,7 +127,7 @@
       padding: 12px 14px; font-size: 14px; font-family: inherit; font-weight: 500;
       color: var(--ink); background: #fff;
     }
-    input[type="text"]:focus { outline: none; border-color: var(--sky); box-shadow: 0 0 0 3px rgba(47,134,199,.12); }
+    input[type="text"]:focus { outline: none; border-color: var(--steel); box-shadow: 0 0 0 3px rgba(60,93,146,.13); }
     input::placeholder { color: #9aa4ae; }
 
     /* ===== Prompt ===== */
@@ -139,7 +138,7 @@
       font-family: inherit; color: var(--ink);
       background: #fbfcfe; white-space: pre-wrap; resize: vertical;
     }
-    .prompt-box:focus { outline: none; border-color: var(--sky); box-shadow: 0 0 0 3px rgba(47,134,199,.12); }
+    .prompt-box:focus { outline: none; border-color: var(--steel); box-shadow: 0 0 0 3px rgba(60,93,146,.13); }
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -151,12 +150,12 @@
     }
     .btn:hover { filter: brightness(1.06); }
     .btn:active { transform: translateY(1px); }
-    .btn.copy { margin-top: 14px; background: linear-gradient(135deg, var(--sky), var(--blue)); }
+    .btn.copy { margin-top: 14px; background: linear-gradient(135deg, var(--steel), var(--blue)); }
     .btn.copy.done { background: linear-gradient(135deg, #2fa566, #1f9e5d); }
-    .btn.hai { background: linear-gradient(135deg, var(--blue), var(--navy));
-               box-shadow: 0 8px 18px rgba(0,48,110,.22); }
-    .btn.gallery { background: linear-gradient(135deg, #e0263f, var(--red));
-                   box-shadow: 0 8px 18px rgba(200,16,46,.24); }
+    .btn.hai { background: linear-gradient(135deg, var(--steel), var(--navy));
+               box-shadow: 0 8px 18px rgba(10,31,68,.22); }
+    .btn.gallery { background: linear-gradient(135deg, var(--blue), var(--navy));
+                   box-shadow: 0 8px 18px rgba(10,31,68,.26); }
 
     /* ===== Gallery note (center) ===== */
     .note {
@@ -166,8 +165,9 @@
     .note strong { color: var(--ink); }
     .deadline {
       display: inline-block; margin-top: 12px;
-      background: #fdebee; color: var(--red);
+      background: #e9edf4; color: var(--navy);
       border-radius: 9px; padding: 7px 15px; font-size: 13.5px; font-weight: 800;
+      letter-spacing: .2px;
     }
 
     footer {
