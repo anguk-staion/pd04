@@ -11,13 +11,16 @@
 
   <style>
     :root {
-      --ink: #1f2d3d;
-      --muted: #6b7785;
-      --line: #e7e2d6;
+      --navy: #00306e;      /* Korean Air deep blue */
+      --blue: #14559e;
+      --sky:  #2f86c7;
+      --sky-soft: #e9f1fa;
+      --red:  #c8102e;      /* taegeuk red */
+      --ivory: #f5f0e4;
+      --ink: #1b2a3d;
+      --muted: #6b7a8d;
+      --line: #dde5ee;
       --card: #ffffff;
-      --ocean: #1f88a8;
-      --ocean-dark: #176f8b;
-      --sand: #f3ede0;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
@@ -26,102 +29,98 @@
         "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(1200px 420px at 50% -120px, #bfe3f0 0%, rgba(191,227,240,0) 70%),
-        linear-gradient(170deg, #e9f4f8 0%, #f4efe4 55%, #f6f1e6 100%);
+        radial-gradient(1100px 460px at 50% -140px, #cbe1f4 0%, rgba(203,225,244,0) 72%),
+        linear-gradient(172deg, #e8f1fb 0%, #eef3f7 48%, #f5f0e4 100%);
       background-attachment: fixed;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
-    .wrap { max-width: 760px; margin: 0 auto; padding: 44px 20px 24px; }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 46px 20px 24px; }
 
-    /* ===== Hero ===== */
+    /* ===== Hero (boarding-pass) ===== */
     .hero { text-align: center; margin-bottom: 30px; }
     .brand {
-      display: inline-block;
-      font-weight: 900; letter-spacing: 3px; font-size: 14px;
-      color: var(--ocean);
-      background: #ffffffcc;
-      border: 1px solid #d4e8ef;
-      border-radius: 999px;
-      padding: 6px 16px; margin-bottom: 16px;
+      display: inline-flex; align-items: center; gap: 7px;
+      font-weight: 800; letter-spacing: 3px; font-size: 13px;
+      color: #fff; background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-radius: 999px; padding: 7px 18px; margin-bottom: 18px;
+      box-shadow: 0 6px 16px rgba(0,48,110,.25);
     }
-    .hero h1 {
-      font-size: 30px; font-weight: 800; margin: 0 0 8px; line-height: 1.3;
-    }
-    .hero h1 .sub-tag { font-size: 18px; font-weight: 700; color: var(--muted); }
+    .hero h1 { font-size: 31px; font-weight: 800; margin: 0 0 9px; line-height: 1.28; letter-spacing: -.5px; }
+    .hero h1 .sub-tag { font-size: 18px; font-weight: 700; color: var(--muted); letter-spacing: 0; }
     .hero p { margin: 0; color: var(--muted); font-size: 15px; }
-    .ticket-line {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      margin: 18px auto 0; max-width: 360px; color: var(--ocean);
+    .route {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      margin: 20px auto 0; max-width: 380px; color: var(--navy);
+      font-weight: 800; font-size: 13px; letter-spacing: 1.5px;
     }
-    .ticket-line .dash {
-      flex: 1; height: 0; border-top: 2px dashed #b9d8e3;
-    }
+    .route .dash { flex: 1; height: 0; border-top: 2px dashed #aac9e0; }
+    .route .plane { color: var(--blue); font-size: 16px; }
 
     /* ===== Card ===== */
     .card {
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 20px;
+      border-radius: 22px;
       overflow: hidden;
       margin-bottom: 20px;
-      box-shadow: 0 10px 26px rgba(31, 45, 61, 0.07);
+      box-shadow: 0 14px 34px rgba(0, 48, 110, 0.08);
     }
-    /* colored step header band */
+    /* unified Korean-Air blue header band */
     .step-head {
-      display: flex; align-items: center; gap: 13px;
-      padding: 16px 20px;
-      border-bottom: 1px solid rgba(0,0,0,.05);
+      display: flex; align-items: center; gap: 14px;
+      padding: 18px 22px;
+      background: linear-gradient(135deg, #eef5fc 0%, #f7fafd 100%);
+      border-bottom: 2px dashed #d3e0ee;   /* ticket perforation */
     }
     .badge {
       flex: 0 0 auto;
-      width: 36px; height: 36px; border-radius: 50%;
-      color: #fff; font-weight: 800; font-size: 16px;
+      width: 40px; height: 40px; border-radius: 12px;
+      color: #fff; font-weight: 800; font-size: 17px;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 3px 8px rgba(0,0,0,.15);
+      background: linear-gradient(140deg, var(--navy), var(--blue));
+      box-shadow: 0 5px 12px rgba(0,48,110,.28);
     }
-    .step-head h2 { font-size: 18px; margin: 0; font-weight: 800; }
+    .step-head .kicker {
+      font-size: 11px; font-weight: 800; letter-spacing: 2px;
+      color: var(--blue); margin-bottom: 2px;
+    }
+    .step-head h2 { font-size: 18.5px; margin: 0; font-weight: 800; letter-spacing: -.3px; }
     .step-head .sub { font-size: 13px; color: var(--muted); margin-top: 3px; }
-    .step-head .ico { margin-left: auto; font-size: 26px; opacity: .9; }
+    .step-head .ico { margin-left: auto; font-size: 24px; opacity: .55; }
 
-    /* per-step colors */
-    .s1 .step-head { background: linear-gradient(135deg, #e4f2f8, #eef7f1); }
-    .s1 .badge { background: #1f88a8; }
-    .s2 .step-head { background: linear-gradient(135deg, #e7f5ec, #f0f7e9); }
-    .s2 .badge { background: #2faa6a; }
-    .s3 .step-head { background: linear-gradient(135deg, #fdeede, #fcf3e6); }
-    .s3 .badge { background: #ef8a3c; }
-    .s4 .step-head { background: linear-gradient(135deg, #efe9fb, #f6edf6); }
-    .s4 .badge { background: #8b5cf6; }
-
-    .card-body { padding: 24px 20px; }
+    .card-body { padding: 26px 22px; }
 
     /* ===== Fields ===== */
-    .field { margin-bottom: 22px; }
+    .field { margin-bottom: 24px; }
     .field:last-child { margin-bottom: 0; }
     .field-label {
-      display: flex; align-items: center; gap: 9px;
-      font-size: 17px; font-weight: 800; color: var(--ink);
-      padding-bottom: 10px; margin-bottom: 14px;
-      border-bottom: 2px solid #eef2f4;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 17px; font-weight: 800; color: var(--ink); letter-spacing: -.2px;
+      padding-bottom: 11px; margin-bottom: 15px;
+      border-bottom: 2px solid #eaf0f6;
     }
     .field-label .lico {
-      width: 28px; height: 28px; border-radius: 9px;
+      width: 30px; height: 30px; border-radius: 10px;
       display: inline-flex; align-items: center; justify-content: center;
-      font-size: 15px; background: #eef6f9;
+      font-size: 15px; color: var(--navy);
+      background: var(--sky-soft);
     }
-    .field-label .hint { font-size: 12.5px; font-weight: 600; color: var(--muted); }
+    .field-label .hint { font-size: 12.5px; font-weight: 600; color: var(--muted); letter-spacing: 0; }
 
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
     .chip {
       border: 1.5px solid var(--line);
-      background: #faf8f3; color: var(--ink);
+      background: #f7f9fc; color: var(--ink);
       border-radius: 999px; padding: 9px 15px; font-size: 14px;
       cursor: pointer; font-family: inherit; font-weight: 600;
       transition: background .12s, border-color .12s, color .12s;
     }
-    .chip:hover { border-color: var(--ocean); }
-    .chip.on { background: var(--ocean); border-color: var(--ocean); color: #fff; }
+    .chip:hover { border-color: var(--sky); }
+    .chip.on {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      border-color: var(--navy); color: #fff;
+    }
 
     input[type="text"] {
       width: 100%;
@@ -129,7 +128,7 @@
       padding: 12px 14px; font-size: 14px; font-family: inherit; font-weight: 500;
       color: var(--ink); background: #fff;
     }
-    input[type="text"]:focus { outline: none; border-color: var(--ocean); }
+    input[type="text"]:focus { outline: none; border-color: var(--sky); box-shadow: 0 0 0 3px rgba(47,134,199,.12); }
     input::placeholder { color: #9aa4ae; }
 
     /* ===== Prompt ===== */
@@ -138,46 +137,47 @@
       border: 1.5px solid var(--line); border-radius: 14px;
       padding: 16px; font-size: 14px; line-height: 1.7;
       font-family: inherit; color: var(--ink);
-      background: #fbfaf6; white-space: pre-wrap; resize: vertical;
+      background: #fbfcfe; white-space: pre-wrap; resize: vertical;
     }
-    .prompt-box:focus { outline: none; border-color: var(--ocean); }
+    .prompt-box:focus { outline: none; border-color: var(--sky); box-shadow: 0 0 0 3px rgba(47,134,199,.12); }
 
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       width: 100%; border: none; border-radius: 13px;
-      padding: 15px 18px; font-size: 15px; font-weight: 800;
+      padding: 16px 18px; font-size: 15px; font-weight: 800;
       font-family: inherit; cursor: pointer; text-decoration: none; color: #fff;
-      transition: filter .12s, background .12s;
+      letter-spacing: .2px;
+      transition: filter .12s, transform .04s;
     }
-    .btn:hover { filter: brightness(.95); }
-    .btn.copy { margin-top: 14px; background: #2faa6a; }
-    .btn.copy.done { background: #1f9e5d; }
-    .btn.hai { background: #ef8a3c; }
-    .btn.gallery {
-      background: #fff; color: #8b5cf6; border: 1.5px solid #8b5cf6;
-    }
-    .btn.gallery:hover { background: #f6f1fd; filter: none; }
+    .btn:hover { filter: brightness(1.06); }
+    .btn:active { transform: translateY(1px); }
+    .btn.copy { margin-top: 14px; background: linear-gradient(135deg, var(--sky), var(--blue)); }
+    .btn.copy.done { background: linear-gradient(135deg, #2fa566, #1f9e5d); }
+    .btn.hai { background: linear-gradient(135deg, var(--blue), var(--navy));
+               box-shadow: 0 8px 18px rgba(0,48,110,.22); }
+    .btn.gallery { background: linear-gradient(135deg, #e0263f, var(--red));
+                   box-shadow: 0 8px 18px rgba(200,16,46,.24); }
 
     /* ===== Gallery note (center) ===== */
     .note {
-      margin-top: 16px; text-align: center;
-      font-size: 14px; color: var(--muted); line-height: 1.7;
+      margin-top: 18px; text-align: center;
+      font-size: 14.5px; color: var(--muted); line-height: 1.75;
     }
     .note strong { color: var(--ink); }
     .deadline {
-      display: inline-block; margin-top: 10px;
-      background: #fff2e3; color: #c2611c;
-      border-radius: 9px; padding: 6px 14px; font-size: 13.5px; font-weight: 800;
+      display: inline-block; margin-top: 12px;
+      background: #fdebee; color: var(--red);
+      border-radius: 9px; padding: 7px 15px; font-size: 13.5px; font-weight: 800;
     }
 
     footer {
       text-align: center; color: var(--muted); font-size: 13px;
-      padding: 28px 0 38px; letter-spacing: .3px;
+      padding: 30px 0 40px; letter-spacing: .3px;
     }
 
     @media (max-width: 480px) {
       .hero h1 { font-size: 24px; }
-      .card-body { padding: 20px 16px; }
+      .card-body { padding: 22px 16px; }
       .field-label { font-size: 16px; }
     }
   </style>
@@ -190,14 +190,15 @@
       <div class="brand">✈ PLAYDAY</div>
       <h1>나만의 여행계획서 만들기 <span class="sub-tag">(간단 버전)</span></h1>
       <p>아래 빈칸을 입력하여 만들어진 프롬프트를 AI에게 입력해보세요</p>
-      <div class="ticket-line"><span class="dash"></span>🧳 ✈ 🏖<span class="dash"></span></div>
+      <div class="route"><span class="dash"></span><span class="plane">✈</span><span>BOARDING</span><span class="plane">✈</span><span class="dash"></span></div>
     </div>
 
     <!-- STEP 1 -->
-    <section class="card s1">
+    <section class="card">
       <header class="step-head">
         <span class="badge">1</span>
         <div>
+          <div class="kicker">STEP 01</div>
           <h2>여행 정보 입력</h2>
           <div class="sub">원하는 조건을 선택하거나 직접 입력하세요</div>
         </div>
@@ -265,10 +266,11 @@
     </section>
 
     <!-- STEP 2 -->
-    <section class="card s2">
+    <section class="card">
       <header class="step-head">
         <span class="badge">2</span>
         <div>
+          <div class="kicker">STEP 02</div>
           <h2>완성된 프롬프트</h2>
           <div class="sub">입력한 내용이 자동으로 프롬프트로 재구성됩니다</div>
         </div>
@@ -281,10 +283,11 @@
     </section>
 
     <!-- STEP 3 -->
-    <section class="card s3">
+    <section class="card">
       <header class="step-head">
         <span class="badge">3</span>
         <div>
+          <div class="kicker">STEP 03</div>
           <h2>HAI 접속</h2>
           <div class="sub">복사한 프롬프트를 HAI에 입력하여 결과물을 생성하세요</div>
         </div>
@@ -296,10 +299,11 @@
     </section>
 
     <!-- STEP 4 -->
-    <section class="card s4">
+    <section class="card">
       <header class="step-head">
         <span class="badge">4</span>
         <div>
+          <div class="kicker">STEP 04</div>
           <h2>Playday Gallery 자랑하기</h2>
           <div class="sub">만든 결과물을 갤러리에 공유해주세요</div>
         </div>
@@ -308,7 +312,7 @@
       <div class="card-body">
         <a class="btn gallery" href="https://hmap.hdec.co.kr/HMAP/WorkSpace/Main/AiPicture.aspx" target="_blank" rel="noopener">Playday Gallery로 이동 →</a>
         <p class="note">
-          만든 결과물을 <strong>Playday Gallery</strong>에 자랑해주세요.<br />
+          동료들에게 '좋아요 수'를 가장 많이 받은<br />
           우수작을 선정하여 <strong>스타벅스 상품권</strong>을 보내 드립니다.<br />
           <span class="deadline">제출기한 : '26년 7월 3일</span>
         </p>
