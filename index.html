@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLAYDAY - 나만의 여행계획 자랑하기</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+    }
+    .poster {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      line-height: 0;
+    }
+    .poster img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    /* 버튼 영역에 링크만 거는 투명 오버레이 (음영/애니메이션 없음) */
+    .poster a.hotspot {
+      position: absolute;
+      display: block;
+      background: transparent;
+      border: 0;
+      outline: none;
+      -webkit-tap-highlight-color: transparent;
+      text-decoration: none;
+    }
+    /* 좌측: 계획서 만들어보기 */
+    .poster a.btn-make {
+      left: 31.45%;
+      top: 83.5%;
+      width: 24.64%;
+      height: 2.83%;
+    }
+    /* 우측: 동료 여행 계획 보러가기 */
+    .poster a.btn-friends {
+      left: 62.45%;
+      top: 83.5%;
+      width: 26.45%;
+      height: 2.83%;
+    }
+  </style>
+</head>
+<body>
+  <div class="poster">
+    <img src="PD04.png" alt="PLAYDAY - 바이브코딩과 함께, 나만의 여행계획 자랑하기" />
+    <a class="hotspot btn-make"
+       href="https://kikeun.github.io/aidesign/vol4.1.html"
+       target="_blank" rel="noopener"
+       aria-label="계획서 만들어보기"></a>
+    <a class="hotspot btn-friends"
+       href="https://hmap.hdec.co.kr/HMAP/WorkSpace/Main/AiPicture.aspx"
+       target="_blank" rel="noopener"
+       aria-label="동료 여행 계획 보러가기"></a>
+  </div>
+</body>
+</html>
