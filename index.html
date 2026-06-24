@@ -3,62 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PLAYDAY - 나만의 여행계획 자랑하기</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-    }
-    .poster {
-      position: relative;
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      line-height: 0;
-    }
-    .poster img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    /* 버튼 영역에 링크만 거는 투명 오버레이 (음영/애니메이션 없음) */
-    .poster a.hotspot {
-      position: absolute;
-      display: block;
-      background: transparent;
-      border: 0;
-      outline: none;
-      -webkit-tap-highlight-color: transparent;
-      text-decoration: none;
-    }
-    /* 좌측: 여행 계획서 만들기 (HAI 활용) */
-    .poster a.btn-make {
-      left: 33.45%;
-      top: 84.92%;
-      width: 26.27%;
-      height: 4.56%;
-    }
-    /* 우측: 동료 작품 보러가기 (Playday Gallery) */
-    .poster a.btn-friends {
-      left: 63.73%;
-      top: 84.92%;
-      width: 26.27%;
-      height: 4.56%;
-    }
-  </style>
+  <title>PLAYDAY - 나만의 여행 계획 자랑하기</title>
 </head>
-<body>
-  <div class="poster">
-    <img src="PD04_R1.png" alt="PLAYDAY - 바이브코딩과 함께, 나만의 여행 계획 자랑하기" />
-    <a class="hotspot btn-make"
-       href="plan.html"
-       target="_blank" rel="noopener"
-       aria-label="여행 계획서 만들기"></a>
-    <a class="hotspot btn-friends"
-       href="https://hmap.hdec.co.kr/HMAP/Authentication/HMAPAccess.aspx?popupUrl=PLAYGALLERY"
-       target="_blank" rel="noopener"
-       aria-label="동료 작품 보러가기"></a>
+<body style="margin:0; padding:0; background:#ffffff;">
+  <!-- ▼▼▼ 게시판에 붙여넣을 때는 아래 <div>...</div> 부분만 복사하세요 ▼▼▼ -->
+  <div style="position:relative; width:100%; max-width:1100px; margin:0 auto; line-height:0; font-size:0;">
+    <img src="https://anguk-staion.github.io/pd04/PD04_R1.png"
+         alt="PLAYDAY - 나만의 여행 계획 자랑하기"
+         style="display:block; width:100%; height:auto; border:0;" />
+    <!-- 좌측: 여행 계획서 만들기 -->
+    <a href="https://anguk-staion.github.io/pd04/plan.html" target="_blank" rel="noopener" title="여행 계획서 만들기"
+       style="position:absolute; left:33.45%; top:84.92%; width:26.27%; height:4.56%; display:block; z-index:2; background:transparent;">
+      <img src="https://anguk-staion.github.io/pd04/spacer.png" alt="" style="display:block; width:100%; height:100%; border:0;" />
+    </a>
+    <!-- 우측: 동료 작품 보러가기 -->
+    <a href="https://hmap.hdec.co.kr/HMAP/Authentication/HMAPAccess.aspx?popupUrl=PLAYGALLERY" target="_blank" rel="noopener" title="동료 작품 보러가기"
+       style="position:absolute; left:63.73%; top:84.92%; width:26.27%; height:4.56%; display:block; z-index:2; background:transparent;">
+      <img src="https://anguk-staion.github.io/pd04/spacer.png" alt="" style="display:block; width:100%; height:100%; border:0;" />
+    </a>
   </div>
+  <!-- ▲▲▲ 여기까지 ▲▲▲ -->
 </body>
 </html>
